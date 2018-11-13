@@ -11,5 +11,16 @@
   <% end %>
 </ul>
 
+<%= form_for @post.comments.build do |f| %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.hidden_field :post_id %>
+  <%= f.submit %>
+<% end %>
+
+<% @post.comments.each do |comment| %>
+  <%= comment.content %>  
+<% end %>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
